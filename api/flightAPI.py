@@ -3,9 +3,17 @@ import urllib.request
 import json
 import sqlite3
 
-# Set up database connection
+# Set up database connection + schema
 connection = sqlite3.connect('flightDB.db')
 cursor = connection.cursor()
+#cursor.execute('DROP TABLE IF EXISTS flights')
+cursor.execute('''CREATE TABLE IF NOT EXISTS flights
+                (id INTEGER PRIMARY KEY,  
+                 origin_location TEXT,
+                 dest_location TEXT, 
+                 price TEXT,
+                 departure_time TEXT)''')
+#cursor.execute("DELETE FROM flights")
 
 # Set up API connection to Amadeus
 url = 'https://test.api.amadeus.com/v1/shopping/flight-destinations'
