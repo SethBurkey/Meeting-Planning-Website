@@ -5,36 +5,60 @@ let allSub = null;
 let startCities = null;
 let resultf = document.getElementById("results")
 numSub.addEventListener("click", function(){
+    //stop if 0 members provided
     if(numOfMems.value < 1){
         preventDefault()
     }
+    //insert a text box for cities per member
     inputf.innerHTML = "<legend>Each member's starting City:</legend>"
     for (let i = 0; i < numOfMems.value; ++i){
         inputf.innerHTML += "<input type='text' class='startCity'><br>"
     }
     inputf.innerHTML += "<button type='botton' id='submitAll'>Submit</button>"
+    //set up for changing the result field
     allSub = document.getElementById("submitAll")
     startCities = document.getElementsByClassName("startCity")
     resultf.innerHTML = "<legend>Results:</legend>"
     allSub.addEventListener("click", function(){
+        //stop if no cities provided
         if (startCities.length < 0){
             preventDefault()
         }
+        // URL endpoint for your server
+        const url = 'https://john.cedarville.edu';
+
+        // Create the request body
+        const requestBody = [];
+
+        for (let i = 0; i < startCities.length; i++) {
+            requestBody[i] = JSON.stringify(startCities[i].value);
+        }
+
+        // Fetch POST request
+        fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: requestBody,
+        })
+        .then(response => {
+            if (!response.ok) {
+            throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Response:', data);
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+
+        //set the result field
         resultf.innerHTML = "<legend>Results:</legend>"
         for (let i = 0; i < startCities.length; ++i){
             resultf.innerHTML += `<div>${startCities[i].value}</div>`
         }
     })
 })
-
-fetch("https://jsonplaceholder.typicode.com/todos", {
-  method: "POST",
-  headers: {
-    "Content-type": "application/json; charset=UTF-8"
-  },
-  body: JSON.stringify({
-    startCities
-  })
-})
-  .then((response) => response.json())
-  .then((json) => console.log(json));
