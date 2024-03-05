@@ -29,7 +29,7 @@ numSub.addEventListener("click", function(){
             preventDefault()
         }
         // URL endpoint for your server
-        const url = 'https://john.cedarville.edu';
+        const url = '10.5.199.80:80';
 
         // Create the request body
         let requestBody = [];
@@ -68,4 +68,3 @@ numSub.addEventListener("click", function(){
         resultf.innerHTML += `<div>${dur.value}</div>`
     })
 })
-
