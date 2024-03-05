@@ -1,8 +1,9 @@
 let numSub = document.getElementById("submitNum")
 let numOfMems = document.getElementById("numOfMems")
 let inputf = document.querySelector("fieldset")
-let allSub = null;
-let startCities = null;
+let allSub = null
+let startCities = null
+let dur = null
 let resultf = document.getElementById("results")
 numSub.addEventListener("click", function(){
     //stop if 0 members provided
@@ -14,10 +15,13 @@ numSub.addEventListener("click", function(){
     for (let i = 0; i < numOfMems.value; ++i){
         inputf.innerHTML += "<input type='text' class='startCity'><br>"
     }
-    inputf.innerHTML += "<button type='botton' id='submitAll'>Submit</button>"
+    inputf.innerHTML += "Duration In Days:<br>"
+    inputf.innerHTML += "<input type='text' id='duration'><br>"
+    inputf.innerHTML += "<button id='submitAll'>Submit</button>"
     //set up for changing the result field
     allSub = document.getElementById("submitAll")
     startCities = document.getElementsByClassName("startCity")
+    dur = document.getElementById("duration")
     resultf.innerHTML = "<legend>Results:</legend>"
     allSub.addEventListener("click", function(){
         //stop if no cities provided
@@ -28,11 +32,12 @@ numSub.addEventListener("click", function(){
         const url = 'https://john.cedarville.edu';
 
         // Create the request body
-        const requestBody = [];
+        let requestBody = [];
 
         for (let i = 0; i < startCities.length; i++) {
             requestBody[i] = JSON.stringify(startCities[i].value);
         }
+        requestBody[startCities.length] = dur.value
 
         // Fetch POST request
         fetch(url, {
@@ -60,5 +65,6 @@ numSub.addEventListener("click", function(){
         for (let i = 0; i < startCities.length; ++i){
             resultf.innerHTML += `<div>${startCities[i].value}</div>`
         }
+        resultf.innerHTML += `<div>${dur.value}</div>`
     })
 })
