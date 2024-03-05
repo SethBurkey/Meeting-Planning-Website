@@ -15,13 +15,20 @@ body{
     overflow: hidden;
 }
 
-.Field{
+#inputf{
     display: flexbox;
     border: 2px;
     color: white;
 }
 
+#grid{
+    display: grid;
+    grid-template-columns: max-content max-content;
+}
+
 fieldset{
     background-color: rgba(66, 66, 130, 0.5);
     width: fit-content;
+    overflow-y: scroll;
+    max-height: 80vh;
 }
