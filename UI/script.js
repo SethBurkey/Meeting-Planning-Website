@@ -8,7 +8,7 @@ let resultf = document.getElementById("results")
 numSub.addEventListener("click", function(){
     //stop if 0 members provided
     if(numOfMems.value < 1){
-        preventDefault()
+        return
     }
     //insert a text box for cities per member
     inputf.innerHTML = "<legend>Each member's starting City:</legend>"
@@ -26,18 +26,21 @@ numSub.addEventListener("click", function(){
     allSub.addEventListener("click", function(){
         //stop if no cities provided
         if (startCities.length < 0){
-            preventDefault()
+            return
         }
-        // URL endpoint for your server
-        const url = '10.5.199.80:80';
-
+        
         // Create the request body
-        let requestBody = [];
+        let requestBody = {
+            startCities: [],
+            duration: dur.value
+        };
 
         for (let i = 0; i < startCities.length; i++) {
-            requestBody[i] = JSON.stringify(startCities[i].value);
+            requestBody.startCities.push(startCities[i].value);
         }
-        requestBody[startCities.length] = dur.value
+
+        // URL to the PHP in this file
+        const url = "mainFileSql.cgi";
 
         // Fetch POST request
         fetch(url, {
@@ -45,7 +48,7 @@ numSub.addEventListener("click", function(){
         headers: {
             'Content-Type': 'application/json',
         },
-        body: requestBody,
+        body: JSON.stringify(requestBody),
         })
         .then(response => {
             if (!response.ok) {
@@ -55,6 +58,7 @@ numSub.addEventListener("click", function(){
         })
         .then(data => {
             console.log('Response:', data);
+            alert(JSON.stringify(data));
         })
         .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
