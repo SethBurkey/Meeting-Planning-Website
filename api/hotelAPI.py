@@ -142,12 +142,12 @@ else:
                 # Insert into database
                 cursor.execute("INSERT INTO hotels (name, location, price) VALUES (?, ?, ?)", (hotel_name, hotel_location, hotel_price))
                 connection.commit()
-                #''' DEBUGGING
+                ''' DEBUGGING
                 print("Name:", hotel_name)
                 print("Location:", hotel_location)
                 print("Price:", hotel_price)
                 print()
-                #'''
+                '''
     except urllib.error.HTTPError as e:
         # Handle HTTP errors
         print('HTTPError:', e.code, e.reason)
