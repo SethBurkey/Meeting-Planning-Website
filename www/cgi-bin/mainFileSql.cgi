@@ -1,4 +1,25 @@
 #!/usr/bin/python3
+
+################################################################################
+# This file is the main algorithm that runs in order to calculate the cost of 
+# people from several cities meeting together based on cost of flying to and
+# lodging at each city that data is collected from. It depends on the database
+# at ../html/API/apiData.db for flight and hotel data. This file is meant to be
+# formatted as a CGI file and output data in json format.
+################################################################################
+
+################################################################################
+# There's a lot of room to improve on this project.
+#  - Allowing the user to specify that those flying in can share rooms
+#  - Adding logs of error messages, especially on the server errors
+#  - Using dates and one-way flights to make certain that flights are in order
+#  - Outputting the path that would be taken (this can use the array prev)
+#  - Allow users to select how many (i.e. Top 5) cities they would like to see
+#  - Consider other things such as necessity of visas, etc.
+# This is not a comprehensive list of possible improvements but certainly a 
+# start if this project is continued in the future.
+################################################################################
+
 import sqlite3
 import sys
 import json
@@ -78,8 +99,8 @@ cursor.close()
 connection.close()
 
 #Set up all-pairs shortest path algorithm
-#*The prev table keeps track of the previous jump to get there and is used to print path
-# data, which is currently (2024-03-08) not being used*
+#*The prev table keeps track of the previous jump to get there and is  
+# used to print path data, which is currently (2024-03-08) not being used*
 best = [[float("inf") for i in range(n)] for j in range(n)]
 prev = [[n for i in range(n)] for j in range(n)]
 for i in range(n):
