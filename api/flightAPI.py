@@ -16,14 +16,14 @@ import sqlite3
 import sys
 
 # Set up database connection + schema
-connection = sqlite3.connect('flightDB.db')
+connection = sqlite3.connect('apiData.db')
 cursor = connection.cursor()
 #cursor.execute('DROP TABLE IF EXISTS flights')
 cursor.execute('''CREATE TABLE IF NOT EXISTS flights
                 (id INTEGER PRIMARY KEY,  
                  origin_location TEXT,
                  dest_location TEXT, 
-                 price TEXT,
+                 price FLOAT,
                  departure_time TEXT)''')
 cursor.execute("DELETE FROM flights")
 
