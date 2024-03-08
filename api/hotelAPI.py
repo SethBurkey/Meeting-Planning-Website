@@ -17,6 +17,7 @@ USAGE:
         for testing purposes.
 
 '''
+#!/usr/bin/python3
 import urllib.parse
 import urllib.request
 import json
@@ -24,7 +25,7 @@ import sqlite3
 import sys
 
 # Set up database connection + schema
-connection = sqlite3.connect('hotelDB.db')
+connection = sqlite3.connect('apiData.db')
 cursor = connection.cursor()
 # Uncomment to delete table -> rebuild
 #cursor.execute('DROP TABLE IF EXISTS hotels')
@@ -32,7 +33,7 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS hotels
                 (id INTEGER PRIMARY KEY, 
                  name TEXT, 
                  location TEXT,
-                 price TEXT)''')
+                 price FLOAT)''')
 
 cursor.execute("DELETE FROM hotels") # Uncomment to clean table rows
 
@@ -59,7 +60,22 @@ if len(sys.argv) == 2 and sys.argv[1] == '-t':
     cursor.execute("INSERT INTO hotels (name, location, price) VALUES (?, ?, ?)", ('Hotel R', 'MCO', '330.45'))       
     cursor.execute("INSERT INTO hotels (name, location, price) VALUES (?, ?, ?)", ('Hotel S', 'FLL', '340.80'))       
     cursor.execute("INSERT INTO hotels (name, location, price) VALUES (?, ?, ?)", ('Hotel T', 'SLC', '350.95'))
-
+    cursor.execute("INSERT INTO hotels (name, location, price) VALUES (?, ?, ?)", ('Hotel U', 'LAX', '205.00'))
+    cursor.execute("INSERT INTO hotels (name, location, price) VALUES (?, ?, ?)", ('Hotel V', 'BKK', '180.50'))       
+    cursor.execute("INSERT INTO hotels (name, location, price) VALUES (?, ?, ?)", ('Hotel W', 'MIA', '280.75'))       
+    cursor.execute("INSERT INTO hotels (name, location, price) VALUES (?, ?, ?)", ('Hotel X', 'MXP', '130.50'))       
+    cursor.execute("INSERT INTO hotels (name, location, price) VALUES (?, ?, ?)", ('Hotel Y', 'AMS', '250.50'))       
+    cursor.execute("INSERT INTO hotels (name, location, price) VALUES (?, ?, ?)", ('Hotel Z', 'LGA', '210.30'))       
+    cursor.execute("INSERT INTO hotels (name, location, price) VALUES (?, ?, ?)", ('Hotel AA', 'PMI', '180.50'))       
+    cursor.execute("INSERT INTO hotels (name, location, price) VALUES (?, ?, ?)", ('Hotel AB', 'OPO', '220.60'))       
+    cursor.execute("INSERT INTO hotels (name, location, price) VALUES (?, ?, ?)", ('Hotel AC', 'MAD', '280.30'))       
+    cursor.execute("INSERT INTO hotels (name, location, price) VALUES (?, ?, ?)", ('Hotel AD', 'FCO', '180.70'))       
+    cursor.execute("INSERT INTO hotels (name, location, price) VALUES (?, ?, ?)", ('Hotel AE', 'ORY', '200.60'))       
+    cursor.execute("INSERT INTO hotels (name, location, price) VALUES (?, ?, ?)", ('Hotel AF', 'LIS', '180.75'))       
+    cursor.execute("INSERT INTO hotels (name, location, price) VALUES (?, ?, ?)", ('Hotel AG', 'LPA', '260.75'))       
+    cursor.execute("INSERT INTO hotels (name, location, price) VALUES (?, ?, ?)", ('Hotel AH', 'LGW', '210.50'))       
+    cursor.execute("INSERT INTO hotels (name, location, price) VALUES (?, ?, ?)", ('Hotel AI', 'CUN', '270.60'))       
+    cursor.execute("INSERT INTO hotels (name, location, price) VALUES (?, ?, ?)", ('Hotel AJ', 'RAK', '300.00'))
 # Call API as intended to fill the database with updated/live data
 else:
     # Set up API connection to Amadeus
@@ -67,8 +83,8 @@ else:
 
     # Define query parameters
     hotelID = 'MCLONGHM' # This needs to be retrieved from the search API, but is behind a paywall
-    check_in_date = '2024-03-05' # Get this from user # May need to be updated for this example to work
-    check_out_date = '2024-03-06'  # Get this from user # May need to be updated for this example to work
+    check_in_date = '2024-03-08' # Get this from user # May need to be updated for this example to work
+    check_out_date = '2024-03-09'  # Get this from user # May need to be updated for this example to work
     room_quantity = 1  # Get this from user
     params = {
         'hotelIds': hotelID,
@@ -141,7 +157,6 @@ else:
 
                 # Insert into database
                 cursor.execute("INSERT INTO hotels (name, location, price) VALUES (?, ?, ?)", (hotel_name, hotel_location, hotel_price))
-                connection.commit()
                 ''' DEBUGGING
                 print("Name:", hotel_name)
                 print("Location:", hotel_location)
@@ -155,4 +170,5 @@ else:
         # Handle URL errors
         print('URLError:', e.reason)
 
+connection.commit()
 connection.close()
