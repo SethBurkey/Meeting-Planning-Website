@@ -1,1 +1,52 @@
-
+{
+  "locations": {
+      "LOS ANGELES INTL": {
+          "code": "LAX"
+      },
+      "SUVARNABHUMI INTL": {
+          "code": "BKK"
+      },
+      "MIAMI INTL": {
+          "code": "MIA"
+      },
+      "MALPENSA": {
+          "code": "MXP"
+      },
+      "SCHIPHOL AIRPORT": {
+          "code": "AMS"
+      },
+      "LAGUARDIA": {
+          "code": "LGA"
+      },
+      "PALMA DE MALLORCA": {
+          "code": "PMI"
+      },
+      "FRANCISCO SA CARNEIRO": {
+          "code": "OPO"
+      },
+      "ADOLFO SUAREZ BARAJAS": {
+          "code": "MAD"
+      },
+      "FIUMICINO": {
+          "code": "FCO"
+      },
+      "ORLY": {
+          "code": "ORY"
+      },
+      "AIRPORT": {
+          "code": "LIS"
+      },
+      "GRAN CANARIA": {
+          "code": "LPA"
+      },
+      "GATWICK": {
+          "code": "LGW"
+      },
+      "INTERNATIONAL": {
+          "code": "CUN"
+      },
+      "MENARA": {
+          "code": "RAK"
+      }
+  }
+}
