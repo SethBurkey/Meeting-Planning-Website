@@ -9,6 +9,7 @@ into the current setup.
 USAGE:
     This script expects any number of 3-character string representations of city names to be passed as command line arguments.
 '''
+#!/usr/bin/python3
 import urllib.parse
 import urllib.request
 import json
