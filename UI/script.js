@@ -63,7 +63,7 @@ numSub.addEventListener("click", function(){
     resultf.innerHTML = "<legend>Results:</legend>"
     allSub.addEventListener("click", function(){  
         if (dur.value == ''){
-            //inputf.innerHTML += "<legend>Each Member's Airport:</legend>"
+            inputf.innerHTML = "<legend>Each Member's Airport:</legend>"
             return
         }      
         // Create the request body
@@ -90,10 +90,16 @@ numSub.addEventListener("click", function(){
             return response.text();
         })
         .then(data => {
-            cities = []
-            costs = []
             //parse response data
             data = JSON.parse(data)
+            if(data.error){
+                console.log(data.error)
+                inputf.innerHTML = "<legend>Each Member's Airport:</legend>"
+                inputf.innerHTML += `<div>Error: ${data.error}</div>`
+                return
+            }
+            cities = []
+            costs = []
             //populate cities and costs with the result data
             for (let element in data){
                 cities.push(element)
