@@ -93,7 +93,7 @@ numSub.addEventListener("click", function(){
             //parse response data
             data = JSON.parse(data)
             if(data.error){
-                //inputf.innerHTML = "<legend>Each Member's Airport:</legend>"
+                inputf.innerHTML = "<legend>Each Member's Airport:</legend>"
                 inputf.innerHTML += `<div>Error: ${data.error}</div>`
                 return
             }
@@ -116,7 +116,7 @@ numSub.addEventListener("click", function(){
             tempRes += "<div id='rgrid'>"
             for (let i = 0; i < costs.length; ++i){
                 tempRes += `<div>#${i+1} City: ${cities[i]}</div>`
-                tempRes += `<div>#${i+1} Cost: $${costs[i]}</div>`
+                tempRes += `<div>Cost: $${costs[i]}</div>`
             }
             tempRes += "</div>"
             resultf.innerHTML = tempRes
