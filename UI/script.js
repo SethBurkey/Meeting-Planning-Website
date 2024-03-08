@@ -93,7 +93,7 @@ numSub.addEventListener("click", function(){
             //parse response data
             data = JSON.parse(data)
             if(data.error){
-                //inputf.innerHTML = "<legend>Each Member's Airport:</legend>"
+                inputf.innerHTML = "<legend>Each Member's Airport:</legend>"
                 inputf.innerHTML += `<div>Error: ${data.error}</div>`
                 return
             }
