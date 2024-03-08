@@ -62,7 +62,7 @@ numSub.addEventListener("click", function(){
     resultf.innerHTML = "<legend>Results:</legend>"
     allSub.addEventListener("click", function(){  
         if (dur.value == '' || dur.value == '0'){
-            resultf.innerHTML = "<legend>Results:</legend>"
+            resultf.innerHTML = "<legend>Destination:</legend>"
             alert("Duration Required")
             return
         }      
@@ -112,11 +112,11 @@ numSub.addEventListener("click", function(){
                 }
             }
             //set the result field
-            let tempRes = "<legend>Results:</legend>"
+            let tempRes = "<legend>Destination:</legend>"
             tempRes += "<div id='rgrid'>"
             for (let i = 0; i < costs.length; ++i){
-                tempRes += `<div>City: ${cities[i]}&nbsp&nbsp&nbsp&nbsp</div>`
-                tempRes += `<div>Cost: $${costs[i]}</div>`
+                tempRes += `<div>#${i+1} City: ${cities[i]}</div>`
+                tempRes += `<div>#${i+1} Cost: $${costs[i]}</div>`
             }
             tempRes += "</div>"
             resultf.innerHTML = tempRes
