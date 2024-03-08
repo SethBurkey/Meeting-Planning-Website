@@ -17,7 +17,7 @@ numSub.addEventListener("click", function(){
     }
     inputf.innerHTML += "Duration In Days:<br>"
     inputf.innerHTML += "<input type='text' id='duration'><br>"
-    inputf.innerHTML += "<button id='submitAll'>Submit</button>"
+    inputf.innerHTML += "<button type='button' id='submitAll'>Submit</button>"
     //set up for changing the result field
     allSub = document.getElementById("submitAll")
     startCities = document.getElementsByClassName("startCity")
@@ -38,37 +38,33 @@ numSub.addEventListener("click", function(){
         for (let i = 0; i < startCities.length; i++) {
             requestBody.startCities.push(startCities[i].value);
         }
-
-        // URL to the PHP in this file
-        const url = "mainFileSql.cgi";
-
-        // Fetch POST request
-        fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestBody),
+        requestBody = JSON.stringify(requestBody)
+        // Send form data to PHP script using fetch
+        fetch('../cgi-bin/mainFileSql.cgi', {
+            method: 'POST',
+            body: requestBody
         })
         .then(response => {
             if (!response.ok) {
-            throw new Error('Network response was not ok');
+                throw new Error('Network response was not ok');
             }
-            return response.json();
+            return response.text();
         })
         .then(data => {
-            console.log('Response:', data);
-            alert(JSON.stringify(data));
+            //parse response data
+            data = JSON.parse(data)
+            //set the result field
+            resultf.innerHTML = "<legend>Results:</legend>"
+            //startCities = data.city
+            // for (let i = 0; i < startCities.length; ++i){
+            //     resultf.innerHTML += `<div>${startCities[i].value}</div>`
+            // }
+            resultf.innerHTML += `<div>${data.city}</div>`
+            resultf.innerHTML += `<div>${data.cost}</div>`
         })
         .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
+            // Handle error
+            console.error('Error:', error);
         });
-
-        //set the result field
-        resultf.innerHTML = "<legend>Results:</legend>"
-        for (let i = 0; i < startCities.length; ++i){
-            resultf.innerHTML += `<div>${startCities[i].value}</div>`
-        }
-        resultf.innerHTML += `<div>${dur.value}</div>`
     })
 })
