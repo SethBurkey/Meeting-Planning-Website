@@ -27,7 +27,13 @@ SETUP:
     0 0 * * * /usr/bin/python3 /var/www/html/API/hotelAPI.py -t
     0 0 * * * /usr/bin/python3 /var/www/html/API/flightAPI.py PAR
   To achieve full production, the -t flag should be removed from hotelAPI.py and the flightAPI daemon
-  should eventually be completely removed so that flightAPI.py can be called with the desired flight origin
-  locations as arguments.
+  should eventually be completely removed so that flightAPI.py can be called with the desired flight
+  origin locations as arguments.
+
+FUTURE DEVELOPMENT:
+  The main area for the improvement of this project will come from upgrading the API. This will allow for
+  more comprehensive data, giving a better approximation for the cost of meeting. This will also allow 
+  for the UI to be expanded to include more options such as:
+    -A toggle for willingness to have a roommate. This can cut down on the number of rooms needed
 
 
