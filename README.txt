@@ -19,6 +19,7 @@ SETUP:
   *This project is intended to run on an Apache web server -- other considerations may be needed in order 
   to run on a different service.*
   -Apache servers do not run python scripts by default -- the server must be configured to run python/cgi
+  -If not renamed, the server should be set up with /var/www/html/index.html as the main file
 
 **API DAEMONS**
   In the the server's cron table (accessed with 'crontab -e') the following lines are used to periodically
