@@ -55,15 +55,15 @@ numSub.addEventListener("click", function(){
     inputf.innerHTML += "Duration In Days:<br>"
     inputf.innerHTML += "<input type='number' id='duration' required><br>"
     inputf.innerHTML += "<button id='submitAll'>Submit</button>"
-    inputf.innerHTML += "<div>Duration Required</div>"
     //set up for changing the result field
     allSub = document.getElementById("submitAll")
     startCities = document.getElementsByClassName("startCity")
     dur = document.getElementById("duration")
     resultf.innerHTML = "<legend>Results:</legend>"
     allSub.addEventListener("click", function(){  
-        if (dur.value == ''){
-            inputf.innerHTML = "<legend>Each Member's Airport:</legend>"
+        if (dur.value == '' || dur.value == '0'){
+            resultf.innerHTML = "<legend>Results:</legend>"
+            alert("Duration Required")
             return
         }      
         // Create the request body
@@ -93,8 +93,7 @@ numSub.addEventListener("click", function(){
             //parse response data
             data = JSON.parse(data)
             if(data.error){
-                console.log(data.error)
-                inputf.innerHTML = "<legend>Each Member's Airport:</legend>"
+                //inputf.innerHTML = "<legend>Each Member's Airport:</legend>"
                 inputf.innerHTML += `<div>Error: ${data.error}</div>`
                 return
             }
@@ -103,7 +102,7 @@ numSub.addEventListener("click", function(){
             //populate cities and costs with the result data
             for (let element in data){
                 cities.push(element)
-                costs.push(data[element])
+                costs.push(data[element].toFixed(2))
             }            
             //get the detailedName of the city from the Abbriviation (code)
             for(i in cities){
@@ -117,7 +116,7 @@ numSub.addEventListener("click", function(){
             tempRes += "<div id='rgrid'>"
             for (let i = 0; i < costs.length; ++i){
                 tempRes += `<div>City: ${cities[i]}&nbsp&nbsp&nbsp&nbsp</div>`
-                tempRes += `<div>Cost: ${costs[i]}</div>`
+                tempRes += `<div>Cost: $${costs[i]}</div>`
             }
             tempRes += "</div>"
             resultf.innerHTML = tempRes
