@@ -1,0 +1,79 @@
+{
+  "locations": {
+      "Los Angeles, United States": {
+          "code": "LAX"
+      },
+      "Bankok, Thailand": {
+          "code": "BKK"
+      },
+      "Miami, United States": {
+          "code": "MIA"
+      },
+      "Tunis, Tunisia": {
+          "code": "TUN"
+      },
+      "Phuket, Thailand": {
+          "code": "HKT"
+      },
+      "Paris, France (CDG)": {
+          "code": "CDG"
+      },
+      "Porto, Portugal": {
+          "code": "OPO"
+      },
+      "Madrid, Spain": {
+          "code": "MAD"
+      },
+      "Rome, Italy": {
+          "code": "FCO"
+      },
+      "Paris, France (ORY)": {
+          "code": "ORY"
+      },
+      "Lisbon, Portugal": {
+          "code": "LIS"
+      },
+      "Bali, Indonesia": {
+          "code": "DPS"
+      },
+      "Guadeloupe": {
+          "code": "PTP"
+      },
+      "Cancun, Mexico": {
+          "code": "CUN"
+      },
+      "Marrakesh, Morocco": {
+          "code": "RAK"
+      },
+      "Athens, Greece": {
+          "code": "ATH"
+      },
+      "Barcelona, Spain": {
+          "code": "BCN"
+      },
+      "Dubai, United Arab Emirates": {
+          "code": "DXB"
+      },
+      "New Jersey, United States": {
+          "code": "EWR"
+      },
+      "Marinique": {
+          "code": "FDF"
+      },
+      "Milan, Italy": {
+          "code": "LIN"
+      },
+      "Tokyo, Japan": {
+          "code": "NRT"
+      },
+      "Istanbul, Turkey": {
+          "code": "SAW"
+      },
+      "San Fransisco, United States": {
+          "code": "SFO"
+      },
+      "Quebec, Canada": {
+          "code": "YUL"
+      }
+  }
+}

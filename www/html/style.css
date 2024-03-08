@@ -1,0 +1,40 @@
+header{
+    padding-top: 1rem;
+    padding-right: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+    color: black;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-image: url("background.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+
+#inputf{
+    display: flexbox;
+    border: 2px;
+    color: white;
+}
+
+#grid{
+    display: grid;
+    grid-template-columns: max-content max-content;
+}
+
+fieldset{
+    background-color: rgba(66, 66, 130, 0.5);
+    width: fit-content;
+    overflow-y: scroll;
+    max-height: 80vh;
+}
+
+#rgrid{
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-column-gap: 3vw;
+}
