@@ -32,3 +32,9 @@ fieldset{
     overflow-y: scroll;
     max-height: 80vh;
 }
+
+#rgrid{
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-column-gap: 3vw;
+}
