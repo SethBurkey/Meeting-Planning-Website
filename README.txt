@@ -15,7 +15,12 @@ Created by Jacob Bender, Seth Burkey, and Ethan Hunter
 
 SETUP:
 
-*API DAEMONS*
+**SERVER CONFIGURATION**
+  *This project is intended to run on an Apache web server -- other considerations may be needed in order 
+  to run on a different service.*
+  -Apache servers do not run python scripts by default -- the server must be configured to run python/cgi
+
+**API DAEMONS**
   In the the server's cron table (accessed with 'crontab -e') the following lines are used to periodically
   call the API, providing updated/'live' data:
     0 0 * * * /usr/bin/python3 /var/www/html/API/hotelAPI.py -t
